@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ふるさと納税 上限額シミュレーター【2026年版】年収と家族で控除上限がわかる</title>
+<meta name="description" content="年収と家族構成を入れるだけで、2026年のふるさと納税の控除上限額(自己負担2,000円で済む寄附額の目安)がわかる無料シミュレーター。寄附した分を記録して、あといくら寄附できるかも確認できます。">
+<meta property="og:title" content="ふるさと納税 上限額シミュレーター【2026年版】">
+<meta property="og:description" content="年収と家族を入れるだけ。自己負担2,000円で済む寄附額と、あといくら寄附できるかがわかる無料ツールです。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://zero-kobo.github.io/furusato-limit/">
+<meta property="og:url" content="https://zero-kobo.github.io/furusato-limit/">
+<meta property="og:image" content="https://zero-kobo.github.io/furusato-limit/ogp.png">
+<meta property="og:site_name" content="ふるさと納税 上限額シミュレーター">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:title" content="ふるさと納税 上限額シミュレーター【2026年版】">
+<meta name="twitter:description" content="年収と家族を入れるだけ。自己負担2,000円で済む寄附額と、あといくら寄附できるかがわかる無料ツールです。">
+<meta name="twitter:image" content="https://zero-kobo.github.io/furusato-limit/ogp.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%81%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"ふるさと納税 上限額シミュレーター","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"ja","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"ふるさと納税の上限額(控除上限額)とは?","acceptedAnswer":{"@type":"Answer","text":"自己負担を2,000円だけにできる寄附額の目安です。これを超えて寄附した分は、税金から差し引かれず、自己負担になります。上限額は主に、年収と家族構成で決まる住民税の額から計算します。"}},
+{"@type":"Question","name":"2026年は基礎控除が増えたのに、上限額は増えないの?","acceptedAnswer":{"@type":"Answer","text":"上限額は主に住民税の額で決まります。2026年分で大きく増えたのは所得税の基礎控除で、住民税の基礎控除は43万円のままです。そのため、多くの会社員では上限額はほとんど変わりません。"}}]}
+</script>
+<style>
+:root{--bg:#f6f3ef;--cd:#fff;--ink:#2a2420;--mut:#6f655d;--ln:#e4ddd5;--ac:#b4461b;--acb:#fbebe2;--ok:#0f766e;--okb:#e1f2ef;--wn:#b91c1c;--wnb:#fde8e8}
+@media(prefers-color-scheme:dark){:root{--bg:#171310;--cd:#211b17;--ink:#f1ebe5;--mut:#a89c91;--ln:#3a312a;--ac:#ff9a6b;--acb:#3b2418;--ok:#4fd1c0;--okb:#173a37;--wn:#ff8a8a;--wnb:#3b1c1c}}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:16px 14px 40px}
+h1{font-size:1.35rem;line-height:1.4;margin:6px 0 4px}h1 small{font-size:.8rem;color:var(--ac);margin-left:6px}
+h2{font-size:1rem;margin:0 0 10px}
+.lead{margin:0 0 14px;color:var(--mut);font-size:.9rem}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:12px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+label,.lb{display:block;font-size:.85rem;color:var(--mut);margin:12px 0 5px}
+.row{display:flex;align-items:center;gap:8px}
+input[type=number],input[type=text]{font:inherit;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--ink);padding:6px 10px}
+#inc{width:130px;font-size:1.4rem;font-weight:700}
+input[type=range]{width:100%;accent-color:var(--ac);margin:8px 0 0}
+.seg{display:flex;gap:6px}
+.seg button,.chip,.btn{font:inherit;font-size:.9rem;border:1px solid var(--ln);background:var(--cd);color:var(--ink);border-radius:8px;padding:8px 12px;cursor:pointer}
+.seg button{flex:1;padding:8px 6px}.seg button.on,.chip.on{background:var(--ac);border-color:var(--ac);color:#fff}
+@media(prefers-color-scheme:dark){.seg button.on,.chip.on{color:#2a1408}}
+.btn.sm{padding:6px 12px;font-size:.85rem}
+.btn.pri{border-color:var(--ac);background:var(--acb);color:var(--ac);font-weight:600}
+button:focus-visible,input:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+summary{cursor:pointer;font-weight:600}
+.srow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;font-size:.88rem}
+.srow input{width:96px;text-align:right}
+.stp{display:flex;align-items:center;gap:6px}.stp button{width:34px;height:34px;padding:0;font-size:1.1rem}.stp output{min-width:2.2em;text-align:center;font-weight:700}
+.sd{margin:3px 0 0;font-size:.76rem;color:var(--mut);line-height:1.55}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:5px 10px;font-size:.82rem}
+.big{font-size:2.2rem;font-weight:800;line-height:1.2;color:var(--ac)}.mut{color:var(--mut);font-size:.85rem}
+.sub{display:flex;gap:10px;margin-top:12px}.sub div{flex:1;background:var(--bg);border-radius:8px;padding:8px 10px}.sub b{display:block;font-size:1.15rem}
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.b{font-size:.78rem;padding:2px 9px;border-radius:99px;background:var(--okb);color:var(--ok)}.b.w{background:var(--wnb);color:var(--wn)}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+td,th{padding:7px 4px;border-bottom:1px solid var(--ln);text-align:right}th{color:var(--mut);font-weight:500}td:first-child,th:first-child{text-align:left}
+tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
+.sc{overflow-x:auto}
+#v-tbl table{font-size:.8rem}#v-tbl td{white-space:nowrap}#v-tbl th{font-size:.74rem;line-height:1.3}
+.bar{height:14px;border-radius:99px;background:var(--bg);overflow:hidden;margin:10px 0 4px;border:1px solid var(--ln)}.bar i{display:block;height:100%;background:var(--ok)}.bar i.over{background:var(--wn)}
+.dl{list-style:none;margin:10px 0 0;padding:0}.dl li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--ln);font-size:.9rem}
+.dl li span{flex:1;overflow-wrap:anywhere}.dl li button{border:0;background:none;color:var(--mut);cursor:pointer;font-size:1rem;padding:2px 6px}
+.add{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.add input[type=text]{flex:1;min-width:120px}.add input[type=number]{width:110px;text-align:right}
+.msg{font-size:.85rem;padding:8px 10px;border-radius:8px;margin-top:10px;background:var(--okb);color:var(--ok)}.msg.w{background:var(--wnb);color:var(--wn)}
+.note{font-size:.76rem;color:var(--mut);line-height:1.6}
+.gl details{border-bottom:1px solid var(--ln);padding:8px 0}.gl details:last-child{border:0}
+.gl summary{font-weight:600;font-size:.95rem}.gl p{margin:6px 0 2px;font-size:.88rem;color:var(--mut)}
+.sh{display:flex;flex-wrap:wrap;gap:8px}
+.sh a,.sh button{font:inherit;font-size:.88rem;text-decoration:none;border:1px solid var(--ln);background:var(--cd);color:var(--ink);border-radius:8px;padding:8px 14px;cursor:pointer}
+.ab p{margin:6px 0;font-size:.88rem}.ab h2{margin-top:20px}.ab h2:first-child{margin-top:0}
+.ab dl{display:grid;grid-template-columns:7em 1fr;gap:6px 8px;font-size:.88rem;margin:0}.ab dt{color:var(--mut)}.ab dd{margin:0}
+.ab a{color:var(--ac)}.ab ul{margin:6px 0 2px;padding-left:1.3em;font-size:.86rem;color:var(--mut)}.ab li{margin:4px 0}
+.ad-box{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:12px;text-align:center;overflow-x:auto}
+.ad-box:empty{display:none}
+.ad-box::before{content:"PR・" attr(data-title);display:block;font-size:.8rem;color:var(--mut);margin-bottom:8px}
+</style>
+<!-- Google tag (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-40QSGNSQEL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-40QSGNSQEL");</script>
+</head>
+<body>
+<div class="wrap">
+<h1>ふるさと納税 上限額シミュレーター<small>2026年版</small></h1>
+<p class="lead">年収と家族を入れるだけで、自己負担2,000円で済む寄附額の目安がわかります。<span id="dl"></span></p>
+
+<section class="card">
+ <div class="top"><b>あなたの条件</b><button class="btn sm" id="reset" type="button">リセット</button></div>
+ <label for="inc">年収(給与の額面・税込み)</label>
+ <div class="row"><input type="number" id="inc" min="0" max="3000" step="10" inputmode="decimal"><b>万円</b></div>
+ <input type="range" id="incr" min="100" max="2500" step="10" aria-label="年収スライダー">
+ <span class="lb">配偶者</span>
+ <div class="seg" data-k="sp"><button type="button" data-v="0">いない・共働き</button><button type="button" data-v="1">扶養している</button></div>
+ <p class="sd">「扶養している」は、配偶者の年収が136万円以下(2026年分)の目安です。配偶者の年収が136万〜207万円なら、「扶養している」を選ぶと少なめ(安全側)の結果になります。</p>
+ <div class="srow"><span>16〜18歳の子・家族(高校生など)</span><div class="stp" data-k="ip"><button type="button" class="btn" data-d="-1" aria-label="減らす">−</button><output></output><button type="button" class="btn" data-d="1" aria-label="増やす">＋</button></div></div>
+ <div class="srow"><span>19〜22歳の子(大学生など)</span><div class="stp" data-k="tk"><button type="button" class="btn" data-d="-1" aria-label="減らす">−</button><output></output><button type="button" class="btn" data-d="1" aria-label="増やす">＋</button></div></div>
+ <p class="sd">15歳以下の子は、上限額に影響しないので入力は不要です。子の年収が136万円を超える場合は、数に入れないでください。</p>
+</section>
+
+<details class="card" id="more"><summary>くわしく入力する(より正確に)</summary>
+ <div class="srow"><label for="sh" style="margin:0">社会保険料(年額・万円)</label><input type="number" id="sh" min="0" step="1" inputmode="decimal" placeholder="自動"></div>
+ <p class="sd">空欄なら年収の約15%(1,000万円を超える部分は約4.5%)で計算します。源泉徴収票の「社会保険料等の金額」を入れると正確になります。</p>
+ <div class="srow"><span>70歳以上の親など(別居)</span><div class="stp" data-k="r1"><button type="button" class="btn" data-d="-1" aria-label="減らす">−</button><output></output><button type="button" class="btn" data-d="1" aria-label="増やす">＋</button></div></div>
+ <div class="srow"><span>70歳以上の親(同居)</span><div class="stp" data-k="r2"><button type="button" class="btn" data-d="-1" aria-label="減らす">−</button><output></output><button type="button" class="btn" data-d="1" aria-label="増やす">＋</button></div></div>
+ <div class="srow"><label for="id" style="margin:0">iDeCoの掛金(年額・万円)</label><input type="number" id="id" min="0" step="1" inputmode="decimal" placeholder="0"></div>
+ <div class="srow"><label for="lf" style="margin:0">生命保険料控除(所得税の額・万円)</label><input type="number" id="lf" min="0" max="12" step="0.1" inputmode="decimal" placeholder="0"></div>
+ <p class="sd">年末調整の書類に書く「控除額の合計」(最大12万円)です。住民税の控除額は、ここから自動で計算します。</p>
+ <div class="srow"><label for="md" style="margin:0">医療費控除(万円)</label><input type="number" id="md" min="0" step="1" inputmode="decimal" placeholder="0"></div>
+ <div class="srow"><span>住宅ローン控除を受けている</span><div class="seg" data-k="hl" style="width:150px"><button type="button" data-v="1">はい</button><button type="button" data-v="0">いいえ</button></div></div>
+</details>
+
+<section class="card"><b>表示する項目</b><p class="mut" style="margin:2px 0 8px">いらない項目はタップで非表示にできます。</p><div class="chips" id="chips"></div></section>
+
+<section class="card" id="s-res"><h2>あなたの上限額の目安</h2><div id="v-res"></div></section>
+<!-- 広告枠1:結果の直後。楽天アフィリエイトのタグ(楽天ふるさと納税など)を、下のdivの中にそのまま貼る(JS経由にしない)。空の間は自動で非表示 -->
+<div class="ad-box" data-title="楽天ふるさと納税で返礼品をさがす"></div>
+
+<section class="card" id="s-memo"><h2>寄附メモ(あといくら?)</h2><div id="v-memo"></div>
+ <div class="add"><input type="text" id="m_n" placeholder="自治体名・返礼品" maxlength="40"><input type="number" id="m_a" placeholder="金額(円)" min="0" step="1000" inputmode="numeric"><button class="btn pri" type="button" id="m_add">追加</button></div>
+ <p class="sd">寄附した分を入れると、上限までの残りがわかります。メモはこの端末のブラウザの中だけに保存されます。</p>
+</section>
+<section class="card" id="s-det"><h2>計算の内訳</h2><div id="v-det"></div></section>
+<section class="card" id="s-tbl"><h2>年収別の早見表</h2><div class="sc" id="v-tbl"></div><p class="note" style="margin:8px 0 0">社会保険料は自動の目安(年収の約15%)、ほかの控除なしで計算した目安です。「夫婦」は配偶者を扶養している場合です。</p></section>
+
+<section class="card" id="s-share"><h2>このツールをシェア</h2><div class="sh" id="shr"></div><p class="mut" style="margin:8px 0 0">共有されるのはツールのURLだけです。入力した年収や寄附メモは含まれません。</p></section>
+
+<section class="card ab" id="about"><h2>このツールについて</h2>
+<p>ふるさと納税で、自己負担を2,000円だけにできる寄附額(控除上限額)の目安を計算する、無料のシミュレーターです。会社員の方が、年収と家族構成を選ぶだけで使えます。寄附メモに寄附した分を入れると、上限まであといくら寄附できるかもわかります。</p>
+<p>入力した年収などは、サーバーに送られません。計算はお使いのブラウザの中だけで行われます。</p>
+<h2>計算の前提</h2>
+<ul>
+<li>2026年1月〜12月の寄附(2027年度の住民税で控除)を対象にした、給与所得者の概算です。2026年10月時点の制度をもとにしています。</li>
+<li>総務省が示す計算方法(住民税の所得割額の20%を上限とする特例控除)に沿って計算しています。</li>
+<li>社会保険料は、入力がなければ年収の約15%としています。年収1,000万円を超える部分は、厚生年金の保険料に上限があるため、約4.5%で計算します。</li>
+<li>副業・年金・株の売却益などの所得、配偶者特別控除、障害者控除、寡婦・ひとり親控除、所得金額調整控除などは含みません。</li>
+<li>給与所得が1,000万円を超える場合など、条件によって実際の額と差が大きくなることがあります。</li>
+</ul></section>
+
+<section class="card gl" id="s-gloss"><h2>よくある質問(タップで開きます)</h2>
+<details><summary>上限額(控除上限額)とは?</summary><p>自己負担を2,000円だけにできる寄附額の目安です。上限を超えて寄附した分は、税金から差し引かれず、そのまま自己負担になります。上限額は主に、年収と家族構成で決まる住民税の額から計算します。</p></details>
+<details><summary>上限ぴったり寄附しても大丈夫?</summary><p>計算は概算なので、上限の9割くらいまでにしておくと安心です。年末に年収が確定してから、残りを寄附する方法もあります。</p></details>
+<details><summary>2026年は基礎控除が増えたのに、上限額は増えないの?</summary><p>2026年分で大きく増えたのは、所得税の基礎控除(最大104万円)です。上限額を決める住民税の基礎控除は43万円のままなので、多くの会社員では上限額はほとんど変わりません。</p></details>
+<details><summary>ワンストップ特例とは?</summary><p>確定申告をしない会社員などが使える、手続きを簡単にする仕組みです。1年間の寄附先が5自治体以内なら、寄附ごとに申請書を出すだけで、控除がすべて住民税で受けられます。申請書は、寄附した翌年の1月10日までに届く必要があります。</p></details>
+<details><summary>確定申告が必要なのはどんな人?</summary><p>寄附先が6自治体以上の人、医療費控除や住宅ローン控除の1年目などで確定申告をする人、個人事業主などです。確定申告をする場合は、ワンストップ特例の申請は無効になるので、ふるさと納税の分も申告に入れます。</p></details>
+<details><summary>住宅ローン控除を受けていると損する?</summary><p>ワンストップ特例を使う場合は、上限額はほとんど変わりません。確定申告で受ける場合は、住宅ローン控除で所得税が0円になると、ふるさと納税の控除が一部受けられないことがあります。心配な方は、少なめに寄附するか、税務署や自治体で確認してください。</p></details>
+<details><summary>いつまでに寄附すればいい?</summary><p>2026年分の上限で控除を受けるには、2026年12月31日までに寄附(支払い)を済ませます。年末は申し込みが集中するので、早めが安心です。</p></details>
+<details><summary>2026年・2027年の制度の変更は?</summary><p>2025年10月から、仲介サイトがポイントを付けることが禁止されました。2026年10月からは、返礼品の地場産品の基準が厳しくなっています。また、2027年の寄附からは、特例控除に193万円(年収1億円相当)の上限ができる予定です。多くの人には影響しませんが、最新の情報は総務省などで確認してください。</p></details>
+<details><summary>住民税の所得割額とは?</summary><p>住民税のうち、所得に応じてかかる部分です(一律の「均等割」は含みません)。毎年5〜6月に勤務先から配られる「住民税決定通知書」に書かれています。</p></details>
+</section>
+
+<!-- 広告枠2:ページ下部。楽天アフィリエイトのタグをそのまま貼る。使わなければ空のままで非表示 -->
+<div class="ad-box" data-title="返礼品えらびに"></div>
+
+<footer class="card ab" id="operator">
+<h2>運営者情報</h2>
+<dl>
+<dt>運営者</dt><dd>ちいさなツール工房</dd>
+<dt>お問い合わせ</dt><dd>不具合やご意見は、<a href="https://note.com/zero_kobo" target="_blank" rel="noopener noreferrer">解説記事(note)</a>のコメント欄にお寄せください。</dd>
+<dt>運営者のnote</dt><dd><a href="https://note.com/zero_kobo" target="_blank" rel="noopener noreferrer">note.com/zero_kobo</a></dd>
+<dt>ほかのツール</dt><dd><a href="https://zero-kobo.github.io/">ちいさなツール工房のツール一覧</a></dd>
+<dt>最終更新</dt><dd>2026年10月16日</dd>
+</dl>
+<h2>広告について</h2>
+<p>当サイトは、楽天アフィリエイトなどのアフィリエイトプログラムによる広告を掲載しています。広告には「PR」と表示します。広告の有無は、計算結果に影響しません。</p>
+<h2>プライバシーポリシー</h2>
+<ul>
+<li>入力した年収・条件などは、外部に送信しません。</li>
+<li>お使いの端末(ブラウザ)には、入力した条件・寄附メモ・「表示する項目」の選択を保存します。「リセット」ボタンか、ブラウザの設定から削除できます。</li>
+<li>アクセス解析に、Googleアナリティクス(GA4)を使っています。ページの閲覧数や、端末・おおよその地域などの利用状況を、Cookieを使って集めます。個人を特定する情報は集めません。入力した年収などの内容も、送りません。集めた情報は、<a href="https://policies.google.com/technologies/partner-sites?hl=ja" target="_blank" rel="noopener noreferrer">Googleのポリシー</a>に従って扱われます。停止したい場合は、ブラウザの設定でCookieを無効にするか、<a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer">オプトアウト用のアドオン</a>を使ってください。</li>
+<li>当サイトはGitHub Pagesで公開しており、アクセスの記録がGitHub側に残る場合があります。</li>
+<li>広告のリンク先で、広告事業者がCookieなどを使って情報を取得することがあります。取得の内容や停止の方法は、各事業者のページでご確認ください。</li>
+<li>シェアボタンは、押したときだけ、各サービスのページに移動します。</li>
+</ul>
+<h2>免責事項</h2>
+<p>このツールの結果は概算で、実際の控除額を保証するものではありません。制度は変わることがあります。最終的な判断は、総務省・国税庁などの公式情報や、お住まいの自治体・税務署にご確認ください。このツールを使って生じた損害について、運営者は責任を負いません。</p>
+</footer>
+
+<p class="note">※概算です。2026年(令和8年)分の所得税と、2027年度(令和9年度)の住民税の制度をもとにしています(2026年10月時点)。会社員の給与所得だけを前提にした計算で、ほかの所得や一部の控除は含みません。最新の情報は、総務省「ふるさと納税ポータルサイト」などの公式情報で確認してください。</p>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const M=1e4,KEY='furusato-limit-v1';
+const D={inc:500,sp:0,ip:0,tk:0,r1:0,r2:0,sh:'',id:'',lf:'',md:'',hl:0};
+const SHOW0={res:1,memo:1,det:1,tbl:1,gloss:1,share:1};
+const NAMES={res:'上限額',memo:'寄附メモ',det:'計算の内訳',tbl:'早見表',gloss:'よくある質問',share:'シェア'};
+let F,SH,MEMO;
+const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
+const num=v=>{const n=parseFloat(v);return isFinite(n)&&n>0?n:0};
+function load(){F={...D};SH={...SHOW0};MEMO=[];try{const j=JSON.parse(localStorage.getItem(KEY));if(j){if(j.f)Object.assign(F,j.f);if(j.show)Object.assign(SH,j.show);if(Array.isArray(j.memo))MEMO=j.memo.filter(m=>m&&typeof m.a==='number')}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({f:F,show:SH,memo:MEMO}))}catch(e){}}
+
+/* ---- 税の計算(円) ---- */
+// 給与所得控除(2026年分・最低74万円)
+function kyuD(y){let f;if(y<=3.6e6)f=y*.3+8e4;else if(y<=6.6e6)f=y*.2+44e4;else if(y<=8.5e6)f=y*.1+110e4;else f=195e4;return Math.min(y,Math.max(74e4,f))}
+// 基礎控除 所得税(2026年分)
+function kisoI(g){if(g<=489e4)return 104e4;if(g<=655e4)return 67e4;if(g<=2350e4)return 62e4;if(g<=2400e4)return 48e4;if(g<=2450e4)return 32e4;if(g<=2500e4)return 16e4;return 0}
+// 基礎控除 住民税
+function kisoR(g){if(g<=2400e4)return 43e4;if(g<=2450e4)return 29e4;if(g<=2500e4)return 15e4;return 0}
+// 配偶者控除(本人の合計所得で段階的に減る) [所得税,住民税,人的控除差]
+function spD(g){if(g<=900e4)return[38e4,33e4,5e4];if(g<=950e4)return[26e4,22e4,4e4];if(g<=1000e4)return[13e4,11e4,2e4];return[0,0,0]}
+// 社会保険料の目安:年収の15%。1,000万円を超える部分は、厚生年金の上限を考えて4.5%(1,668万円まで)
+function autoSh(y){return Math.round(Math.min(y,1000e4)*.15+Math.min(Math.max(y-1000e4,0),668e4)*.045)}
+function rateOf(t){if(t<=0)return 0;if(t<=195e4)return .05;if(t<=330e4)return .1;if(t<=695e4)return .2;if(t<=900e4)return .23;if(t<=1800e4)return .33;if(t<=4000e4)return .4;return .45}
+const fl=x=>Math.floor(Math.max(0,x)/1000)*1000;
+function calc(f){
+ const y=num(f.inc)*M,kd=kyuD(y),g=Math.max(0,y-kd);
+ const sh=f.sh===''||f.sh==null?autoSh(y):num(f.sh)*M;
+ const ide=num(f.id)*M,md=num(f.md)*M,lfI=Math.min(12e4,num(f.lf)*M),lfR=Math.min(7e4,Math.round(lfI*7/12));
+ const sp=f.sp?spD(g):[0,0,0];
+ const ip=+f.ip||0,tk=+f.tk||0,r1=+f.r1||0,r2=+f.r2||0;
+ const famI=sp[0]+ip*38e4+tk*63e4+r1*48e4+r2*58e4;
+ const famR=sp[1]+ip*33e4+tk*45e4+r1*38e4+r2*45e4;
+ const kI=kisoI(g),kR=kisoR(g);
+ const common=sh+ide+md;
+ const tI=fl(g-common-lfI-kI-famI),tR=fl(g-common-lfR-kR-famR);
+ // 人的控除差(調整控除・税率の判定に使う)
+ const sa=(g<=2500e4?5e4:0)+sp[2]+ip*5e4+tk*18e4+r1*10e4+r2*13e4;
+ let adj=0;if(g<=2500e4){adj=tR<=200e4?Math.min(sa,tR)*.05:Math.max(sa-(tR-200e4),5e4)*.05}
+ const R=Math.max(0,Math.floor(tR*.1-adj));
+ const t=rateOf(tR-sa);
+ const lim=R>0?Math.floor(R*.2/(.9-t*1.021))+2000:0;
+ const tAct=rateOf(tI);
+ return{y,kd,g,sh,ide,md,lfI,lfR,famI,famR,kI,kR,tI,tR,sa,adj,R,t,tAct,lim};
+}
+
+/* ---- 表示 ---- */
+function deadline(){const now=new Date(),end=new Date(2026,11,31,23,59,59);const d=Math.ceil((end-now)/864e5);
+ return d>0?`2026年分の寄附の締め切り(12月31日)まで、あと<b>${d}日</b>。`:'2026年分の寄附の受付は終わりました。'}
+function rRes(c){
+ if(c.lim<=2000)return `<p class="big">ほぼ0円</p><p class="mut">この条件では住民税(所得割)がかからない見込みのため、ふるさと納税をしても税金が戻りません。寄附すると全額が自己負担になります。</p>`;
+ const safe=Math.floor(c.lim*.9/1000)*1000,used=MEMO.reduce((s,m)=>s+m.a,0);
+ const bd=[];if(c.t>=.33)bd.push('<span class="b w">高い年収帯:実額との差が出やすい</span>');
+ if(F.hl)bd.push('<span class="b w">住宅ローン控除:確定申告なら要注意</span>');
+ if(num(F.md)>0)bd.push('<span class="b w">医療費控除あり:確定申告が必要</span>');
+ return `<p class="mut" style="margin:0">自己負担2,000円で済む寄附額の上限</p><p class="big">約${yen(Math.floor(c.lim/100)*100)}</p>
+ <div class="sub"><div><span class="mut">安心ライン(9割)</span><b>${yen(safe)}</b></div><div><span class="mut">寄附メモの合計</span><b>${yen(used)}</b></div></div>
+ ${bd.length?`<div class="badges">${bd.join('')}</div>`:''}
+ <p class="mut" style="margin:10px 0 0">2,000円を引いた残りが、2027年の住民税(と所得税)から差し引かれます。</p>`}
+function rMemo(c){const used=MEMO.reduce((s,m)=>s+m.a,0),lim=c.lim>2000?c.lim:0,left=lim-used,pct=lim?Math.min(100,used/lim*100):0;
+ const n=new Set(MEMO.map(m=>m.n.trim()).filter(Boolean)).size;
+ let msg='';
+ if(!MEMO.length)msg='<p class="mut" style="margin:6px 0 0">まだ記録がありません。</p>';
+ else if(left<0)msg=`<div class="msg w">上限を<b>${yen(-left)}</b>超えています。超えた分は自己負担になります。</div>`;
+ else msg=`<div class="msg">上限まで、あと<b>${yen(left)}</b>(安心ラインまで${yen(Math.max(0,Math.floor(lim*.9)-used))})</div>`;
+ if(n>5)msg+=`<div class="msg w">寄附先が${n}自治体です。6自治体以上はワンストップ特例が使えないので、確定申告が必要です。</div>`;
+ const list=MEMO.map((m,i)=>`<li><span>${esc(m.n||'(名前なし)')}</span><b>${yen(m.a)}</b><button type="button" data-i="${i}" aria-label="削除">✕</button></li>`).join('');
+ return `<div class="bar"><i class="${left<0?'over':''}" style="width:${pct}%"></i></div><p class="mut" style="margin:0">${yen(used)} / ${yen(lim)}(${MEMO.length}件・${n}自治体)</p>${msg}${list?`<ul class="dl">${list}</ul>`:''}`}
+function esc(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function rDet(c){const r=(a,b,cls='')=>`<tr class="${cls}"><td>${a}</td><td>${b}</td></tr>`;
+ return `<div class="sc"><table>${r('年収(給与収入)',yen(c.y))}${r('給与所得控除',yen(c.kd))}${r('給与所得',yen(c.g))}${r('社会保険料'+(F.sh===''?'(自動の目安)':''),yen(c.sh))}
+ ${r('家族の控除(住民税)',yen(c.famR))}${r('基礎控除(住民税)',yen(c.kR))}${c.ide+c.md+c.lfR?r('iDeCo・医療費・生命保険(住民税)',yen(c.ide+c.md+c.lfR)):''}
+ ${r('住民税の課税所得',yen(c.tR))}${r('調整控除',yen(c.adj))}${r('住民税の所得割額',yen(c.R),'t')}</table></div>
+ <p class="mut">上限額 = 所得割額 × 20% ÷ (90% − ${Math.round(c.t*100)}% × 1.021) + 2,000円</p>
+ <p class="note">所得税の課税所得は${yen(c.tI)}(税率${Math.round(c.tAct*100)}%)です。所得税の基礎控除(${yen(c.kI)})は2026年分から大きくなりましたが、上限額は住民税の所得割額で決まるため、ほとんど影響しません。</p>`}
+function rTbl(){const incs=[300,400,500,600,700,800,900,1000,1200,1500];const cols=[[0,0,0],[1,0,0],[1,1,0],[1,0,1]];
+ const head='<tr><th>年収</th><th>独身<br>共働き</th><th>夫婦</th><th>夫婦<br>+高校生</th><th>夫婦<br>+大学生</th></tr>';
+ const me=Math.round(num(F.inc)/100)*100;
+ const rows=incs.map(v=>`<tr class="${v===me?'me':''}"><td>${v}万円</td>${cols.map(([sp,ip,tk])=>{const l=calc({...D,inc:v,sp,ip,tk}).lim;return `<td>${l>2000?(Math.floor(l/1000)/10).toFixed(1)+'万':'-'}</td>`}).join('')}</tr>`).join('');
+ return `<table>${head}${rows}</table>`}
+function render(){const c=calc(F);
+ $('v-res').innerHTML=rRes(c);$('v-memo').innerHTML=rMemo(c);$('v-det').innerHTML=rDet(c);$('v-tbl').innerHTML=rTbl();$('dl').innerHTML=deadline();
+ $('v-memo').querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{MEMO.splice(+b.dataset.i,1);save();render()});
+ Object.keys(NAMES).forEach(k=>{const el=$('s-'+k);if(el)el.hidden=!SH[k]});save()}
+function sync(){$('inc').value=F.inc;$('incr').value=Math.min(2500,Math.max(100,F.inc));
+ document.querySelectorAll('.seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.classList.toggle('on',String(F[g.dataset.k])===b.dataset.v)));
+ document.querySelectorAll('.stp').forEach(s=>s.querySelector('output').textContent=F[s.dataset.k]);
+ ['sh','id','lf','md'].forEach(k=>$(k).value=F[k]);
+ $('chips').innerHTML=Object.keys(NAMES).map(k=>`<button type="button" class="chip${SH[k]?' on':''}" data-k="${k}" aria-pressed="${!!SH[k]}">${NAMES[k]}</button>`).join('');
+ $('chips').querySelectorAll('.chip').forEach(b=>b.onclick=()=>{SH[b.dataset.k]=SH[b.dataset.k]?0:1;sync();render()})}
+function setInc(v){F.inc=Math.min(3000,Math.max(0,parseFloat(v)||0));$('incr').value=Math.min(2500,Math.max(100,F.inc));render()}
+$('inc').oninput=e=>setInc(e.target.value);
+$('incr').oninput=e=>{$('inc').value=e.target.value;setInc(e.target.value)};
+document.querySelectorAll('.seg').forEach(g=>g.onclick=e=>{const b=e.target.closest('button');if(!b)return;F[g.dataset.k]=+b.dataset.v;sync();render()});
+document.querySelectorAll('.stp').forEach(s=>s.onclick=e=>{const b=e.target.closest('button');if(!b)return;const k=s.dataset.k;F[k]=Math.min(9,Math.max(0,(+F[k]||0)+(+b.dataset.d)));sync();render()});
+['sh','id','lf','md'].forEach(k=>$(k).oninput=e=>{F[k]=e.target.value;render()});
+$('m_add').onclick=()=>{const a=Math.round(num($('m_a').value));if(!a){$('m_a').focus();return}MEMO.push({n:$('m_n').value.trim().slice(0,40),a});$('m_n').value='';$('m_a').value='';render()};
+$('m_a').onkeydown=e=>{if(e.key==='Enter')$('m_add').click()};
+$('reset').onclick=()=>{if(MEMO.length&&!confirm('入力と寄附メモをすべて消して、最初の状態に戻します。よろしいですか?'))return;F={...D};MEMO=[];SH={...SHOW0};sync();render()};
+(function(){const U='https://zero-kobo.github.io/furusato-limit/',T='ふるさと納税 上限額シミュレーター【2026年版】年収と家族を入れるだけで上限額がわかる無料ツール',e=encodeURIComponent;
+ const L=[['X','https://twitter.com/intent/tweet?text='+e(T)+'&url='+e(U)+'&hashtags='+e('ふるさと納税')],['LINE','https://social-plugins.line.me/lineit/share?url='+e(U)],['Threads','https://www.threads.net/intent/post?text='+e(T+' '+U)],['はてブ','https://b.hatena.ne.jp/add?mode=confirm&url='+e(U)+'&title='+e(T)],['Facebook','https://www.facebook.com/sharer/sharer.php?u='+e(U)]];
+ $('shr').innerHTML=L.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${n}</a>`).join('')+'<button type="button" id="sh_cp">リンクをコピー</button>'+(navigator.share?'<button type="button" id="sh_os">その他</button>':'');
+ $('sh_cp').onclick=async()=>{const b=$('sh_cp');try{await navigator.clipboard.writeText(U);b.textContent='コピーしました';setTimeout(()=>b.textContent='リンクをコピー',2000)}catch(x){window.prompt('このURLをコピーしてください',U)}};
+ if($('sh_os'))$('sh_os').onclick=()=>navigator.share({title:T,url:U}).catch(()=>{});
+})();
+load();sync();render();
+</script>
+</body>
+</html>
