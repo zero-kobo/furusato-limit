@@ -77,6 +77,10 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 .ab p{margin:6px 0;font-size:.88rem}.ab h2{margin-top:20px}.ab h2:first-child{margin-top:0}
 .ab dl{display:grid;grid-template-columns:7em 1fr;gap:6px 8px;font-size:.88rem;margin:0}.ab dt{color:var(--mut)}.ab dd{margin:0}
 .ab a{color:var(--ac)}.ab ul{margin:6px 0 2px;padding-left:1.3em;font-size:.86rem;color:var(--mut)}.ab li{margin:4px 0}
+.fig{margin:4px 0 6px}.fig text{fill:var(--ink);font-size:12px}.fig .m{fill:var(--mut);font-size:10.5px}.fig .bx{fill:var(--bg);stroke:var(--ln)}.fig .ar{stroke:var(--ac);stroke-width:2;fill:none}.fig .ar2{stroke:var(--ok);stroke-width:2;fill:none}.fig .hd{fill:var(--ac)}.fig .hd2{fill:var(--ok)}
+.steps{list-style:none;margin:6px 0 0;padding:0;counter-reset:s}.steps li{position:relative;padding:0 0 12px 40px;font-size:.9rem}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--acb);color:var(--ac);font-weight:700;text-align:center;line-height:28px}.steps b{display:block}.steps span{color:var(--mut);font-size:.84rem}
+.cmp th{text-align:center;color:var(--ink);font-weight:700;background:var(--bg)}.cmp td{text-align:left;vertical-align:top;font-size:.84rem}.cmp td:first-child{color:var(--mut);white-space:nowrap;width:4.5em}
+#jump{font-size:.85rem;color:var(--ac)}
 .ad-box{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:12px;text-align:center;overflow-x:auto}
 .ad-box:empty{display:none}
 .ad-box::before{content:"PR・" attr(data-title);display:block;font-size:.8rem;color:var(--mut);margin-bottom:8px}
@@ -88,7 +92,7 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 <body>
 <div class="wrap">
 <h1>ふるさと納税 上限額シミュレーター<small>2026年版</small></h1>
-<p class="lead">年収と家族を入れるだけで、自己負担2,000円で済む寄附額の目安がわかります。<span id="dl"></span></p>
+<p class="lead">年収と家族を入れるだけで、自己負担2,000円で済む寄附額の目安がわかります。<span id="dl"></span> <a id="jump" href="#s-how">はじめての方は、しくみから見る</a></p>
 
 <section class="card">
  <div class="top"><b>あなたの条件</b><button class="btn sm" id="reset" type="button">リセット</button></div>
@@ -142,6 +146,37 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 <li>給与所得が1,000万円を超える場合など、条件によって実際の額と差が大きくなることがあります。</li>
 </ul></section>
 
+<section class="card" id="s-how"><h2>はじめての方へ:ふるさと納税のしくみ</h2>
+<p style="margin:0 0 6px;font-size:.9rem">ふるさと納税は、好きな自治体に寄附すると、寄附額から2,000円を引いた分が、翌年の税金から差し引かれる仕組みです。寄附した自治体からは、お礼の品(返礼品)が届きます。</p>
+<svg class="fig" viewBox="0 0 360 210" role="img" aria-label="あなたが自治体に寄附すると、返礼品と受領証明書が届き、翌年の住民税と所得税が寄附額マイナス2,000円分だけ減る、という流れの図">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="hd"/></marker><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="hd2"/></marker></defs>
+<rect class="bx" x="4" y="76" width="80" height="48" rx="8"/><text x="44" y="97" text-anchor="middle">あなた</text><text x="44" y="113" text-anchor="middle" class="m">寄附する人</text>
+<rect class="bx" x="222" y="6" width="134" height="46" rx="8"/><text x="289" y="26" text-anchor="middle">応援したい自治体</text><text x="289" y="42" text-anchor="middle" class="m">どこでもOK</text>
+<rect class="bx" x="222" y="140" width="134" height="46" rx="8"/><text x="289" y="160" text-anchor="middle">住んでいる市区町村</text><text x="289" y="176" text-anchor="middle" class="m">と税務署</text>
+<path class="ar" d="M86 84 L216 30" marker-end="url(#a1)"/><text x="112" y="44" text-anchor="middle">① 寄附する</text>
+<path class="ar" d="M220 46 L92 100" marker-end="url(#a1)"/><text x="236" y="108" text-anchor="middle" class="m">② 返礼品と受領証明書</text>
+<path class="ar2" d="M220 164 L92 116" marker-end="url(#a2)"/><text x="112" y="182" text-anchor="middle">③ 翌年の税金が減る</text><text x="112" y="198" text-anchor="middle" class="m">(寄附額 − 2,000円)</text>
+</svg>
+<p class="note" style="margin:0 0 4px">ワンストップ特例を使うと、③はすべて住民税から差し引かれます。確定申告をすると、一部は所得税の還付として戻ります。</p>
+<h2 style="margin-top:16px">寄附から控除までの流れ</h2>
+<ol class="steps">
+<li><b>上限額を調べる</b><span>このツールで、自己負担2,000円で済む寄附額の目安を確認します。</span></li>
+<li><b>自治体と返礼品を選んで寄附する</b><span>ふるさと納税サイトや自治体のページから申し込みます。2026年分は12月31日までの支払いが対象です。</span></li>
+<li><b>返礼品と「寄附金受領証明書」が届く</b><span>証明書は、確定申告で必要になります。届く時期は自治体によって違うので、なくさずに保管します。</span></li>
+<li><b>控除の手続きをする</b><span>ワンストップ特例(翌年1月10日までに申請書が届くように)か、確定申告(翌年3月15日まで)のどちらかです。何もしないと控除されません。</span></li>
+<li><b>翌年の税金が減ったか確かめる</b><span>翌年5〜6月ごろに届く「住民税決定通知書」の「寄附金税額控除」の欄で確認できます。</span></li>
+</ol>
+<h2 style="margin-top:10px">ワンストップ特例と確定申告のちがい</h2>
+<div class="sc"><table class="cmp">
+<tr><th></th><th>ワンストップ特例</th><th>確定申告</th></tr>
+<tr><td>使える人</td><td>ふるさと納税のほかに確定申告がいらない会社員などで、寄附先が5自治体以内の人</td><td>誰でも。寄附先が6自治体以上、医療費控除や住宅ローン控除の1年目、副業の所得が20万円を超える人、個人事業主などは、こちら</td></tr>
+<tr><td>寄附先の数</td><td>1年で5自治体まで(同じ自治体なら何回でもOK)</td><td>制限なし</td></tr>
+<tr><td>手続き</td><td>寄附ごとに、各自治体へ申請書と本人確認書類を出す(オンライン申請できる自治体も)</td><td>寄附金受領証明書をもとに、税務署に確定申告をする</td></tr>
+<tr><td>期限</td><td>寄附した翌年の1月10日必着</td><td>寄附した翌年の3月15日まで</td></tr>
+<tr><td>控除のされ方</td><td>全額、翌年の住民税から</td><td>所得税の還付と、翌年の住民税から</td></tr>
+</table></div>
+<p class="note" style="margin:8px 0 0">ワンストップ特例を申請したあとで確定申告をすると、特例は無効になります。その場合は、ふるさと納税の分も確定申告に入れてください。</p>
+</section>
 <section class="card gl" id="s-gloss"><h2>よくある質問(タップで開きます)</h2>
 <details><summary>上限額(控除上限額)とは?</summary><p>自己負担を2,000円だけにできる寄附額の目安です。上限を超えて寄附した分は、税金から差し引かれず、そのまま自己負担になります。上限額は主に、年収と家族構成で決まる住民税の額から計算します。</p></details>
 <details><summary>上限ぴったり寄附しても大丈夫?</summary><p>計算は概算なので、上限の9割くらいまでにしておくと安心です。年末に年収が確定してから、残りを寄附する方法もあります。</p></details>
@@ -188,8 +223,8 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 const $=id=>document.getElementById(id);
 const M=1e4,KEY='furusato-limit-v1';
 const D={inc:500,sp:0,ip:0,tk:0,r1:0,r2:0,sh:'',id:'',lf:'',md:'',hl:0};
-const SHOW0={res:1,memo:1,det:1,tbl:1,gloss:1,share:1};
-const NAMES={res:'上限額',memo:'寄附メモ',det:'計算の内訳',tbl:'早見表',gloss:'よくある質問',share:'シェア'};
+const SHOW0={res:1,memo:1,det:1,tbl:1,how:1,gloss:1,share:1};
+const NAMES={res:'上限額',memo:'寄附メモ',det:'計算の内訳',tbl:'早見表',how:'しくみ',gloss:'よくある質問',share:'シェア'};
 let F,SH,MEMO;
 const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
 const num=v=>{const n=parseFloat(v);return isFinite(n)&&n>0?n:0};
@@ -267,7 +302,7 @@ function rTbl(){const incs=[300,400,500,600,700,800,900,1000,1200,1500];const co
 function render(){const c=calc(F);
  $('v-res').innerHTML=rRes(c);$('v-memo').innerHTML=rMemo(c);$('v-det').innerHTML=rDet(c);$('v-tbl').innerHTML=rTbl();$('dl').innerHTML=deadline();
  $('v-memo').querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{MEMO.splice(+b.dataset.i,1);save();render()});
- Object.keys(NAMES).forEach(k=>{const el=$('s-'+k);if(el)el.hidden=!SH[k]});save()}
+ Object.keys(NAMES).forEach(k=>{const el=$('s-'+k);if(el)el.hidden=!SH[k]});$('jump').hidden=!SH.how;save()}
 function sync(){$('inc').value=F.inc;$('incr').value=Math.min(2500,Math.max(100,F.inc));
  document.querySelectorAll('.seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.classList.toggle('on',String(F[g.dataset.k])===b.dataset.v)));
  document.querySelectorAll('.stp').forEach(s=>s.querySelector('output').textContent=F[s.dataset.k]);
