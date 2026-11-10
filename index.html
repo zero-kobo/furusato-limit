@@ -81,6 +81,11 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 .steps{list-style:none;margin:6px 0 0;padding:0;counter-reset:s}.steps li{position:relative;padding:0 0 12px 40px;font-size:.9rem}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--acb);color:var(--ac);font-weight:700;text-align:center;line-height:28px}.steps b{display:block}.steps span{color:var(--mut);font-size:.84rem}
 .cmp th{text-align:center;color:var(--ink);font-weight:700;background:var(--bg)}.cmp td{text-align:left;vertical-align:top;font-size:.84rem}.cmp td:first-child{color:var(--mut);white-space:nowrap;width:4.5em}
 #jump{font-size:.85rem;color:var(--ac)}
+#v-plan .seg{margin:10px 0 6px}
+.spl{font-size:1.25rem;font-weight:800;margin:6px 0 2px}
+.fd{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:6px;margin-top:8px}
+.fd a{display:block;text-align:center;text-decoration:none;font-size:.9rem;font-weight:600;border:1px solid var(--ac);background:var(--acb);color:var(--ac);border-radius:8px;padding:10px 6px}
+.pr{font-size:.76rem;color:var(--mut);margin:12px 0 0}
 .ad-box{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:12px;text-align:center;overflow-x:auto}
 .ad-box:empty{display:none}
 .ad-box::before{content:"PR・" attr(data-title);display:block;font-size:.8rem;color:var(--mut);margin-bottom:8px}
@@ -139,8 +144,9 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 
 <section class="card" id="s-memo"><h2>寄附メモ(あといくら?)</h2><div id="v-memo"></div>
  <div class="add"><input type="text" id="m_n" placeholder="自治体名・返礼品" maxlength="40"><input type="number" id="m_a" placeholder="金額(円)" min="0" step="1000" inputmode="numeric"><button class="btn pri" type="button" id="m_add">追加</button></div>
- <p class="sd">寄附した分を入れると、上限までの残りがわかります。メモはこの端末のブラウザの中だけに保存されます。</p>
+ <p class="sd">寄附した分を入れると、上限までの残りと、残りの枠の使いみちがわかります。メモはこの端末のブラウザの中だけに保存されます。</p>
 </section>
+<section class="card" id="s-plan"><h2>残りの枠の使いみち</h2><div id="v-plan"></div></section>
 <section class="card" id="s-det"><h2>計算の内訳</h2><div id="v-det"></div></section>
 <section class="card" id="s-tbl"><h2>年収別の早見表</h2><div class="sc" id="v-tbl"></div><p class="note" style="margin:8px 0 0">社会保険料は自動の目安(年収の約15%)、ほかの控除なしで計算した目安です。「夫婦」は配偶者を扶養している場合です。</p></section>
 
@@ -196,6 +202,7 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 <details><summary>ワンストップ特例とは?</summary><p>確定申告をしない会社員などが使える、手続きを簡単にする仕組みです。1年間の寄附先が5自治体以内なら、寄附ごとに申請書を出すだけで、控除がすべて住民税で受けられます。申請書は、寄附した翌年の1月10日までに届く必要があります。</p></details>
 <details><summary>確定申告が必要なのはどんな人?</summary><p>寄附先が6自治体以上の人、医療費控除や住宅ローン控除の1年目などで確定申告をする人、個人事業主などです。確定申告をする場合は、ワンストップ特例の申請は無効になるので、ふるさと納税の分も申告に入れます。</p></details>
 <details><summary>住宅ローン控除を受けていると損する?</summary><p>ワンストップ特例を使う場合は、上限額はほとんど変わりません。確定申告で受ける場合は、住宅ローン控除で所得税が0円になると、ふるさと納税の控除が一部受けられないことがあります。心配な方は、少なめに寄附するか、税務署や自治体で確認してください。</p></details>
+<details><summary>残りの枠が中途半端なときは、どうすればいい?</summary><p>無理に使い切らなくて大丈夫です。寄附メモに入れると、「残りの枠の使いみち」に、残りの金額と、その金額に近い返礼品のさがし方が出ます。数千円からの返礼品(お米の小分け、日用品など)もあります。上限を超えた分は自己負担になるので、ぴったりを狙わず、安心ライン(9割)までにしておくのがおすすめです。</p></details>
 <details><summary>いつまでに寄附すればいい?</summary><p>2026年分の上限で控除を受けるには、2026年12月31日までに寄附(支払い)を済ませます。年末は申し込みが集中するので、早めが安心です。</p></details>
 <details><summary>2026年・2027年の制度の変更は?</summary><p>2025年10月から、仲介サイトがポイントを付けることが禁止されました。2026年10月からは、返礼品の地場産品の基準が厳しくなっています。また、2027年の寄附からは、特例控除に193万円(年収1億円相当)の上限ができる予定です。多くの人には影響しませんが、最新の情報は総務省などで確認してください。</p></details>
 <details><summary>住民税決定通知書のどこを見ればいい?</summary><p>給与明細と一緒に届く「特別徴収税額 決定通知書」の「所得割額」の行です。「市町村民税」と「道府県民税」の2つの欄を足します。去年ふるさと納税をした人は、その分だけ所得割額が減っているので、「税額控除額」のうち寄附金税額控除の分を足し戻してください。「税額控除前所得割額」の欄があれば、その数字をそのまま使えます。</p></details>
@@ -212,7 +219,7 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 <dt>お問い合わせ</dt><dd>不具合やご意見は、<a href="https://note.com/zero_kobo/n/n77f9b8b0fd67" target="_blank" rel="noopener noreferrer">解説記事(note)</a>のコメント欄にお寄せください。</dd>
 <dt>運営者のnote</dt><dd><a href="https://note.com/zero_kobo" target="_blank" rel="noopener noreferrer">note.com/zero_kobo</a></dd>
 <dt>ほかのツール</dt><dd><a href="https://zero-kobo.github.io/">ちいさなツール工房のツール一覧</a></dd>
-<dt>最終更新</dt><dd>2026年10月17日</dd>
+<dt>最終更新</dt><dd>2026年11月11日</dd>
 </dl>
 <h2>広告について</h2>
 <p>当サイトは、楽天アフィリエイトなどのアフィリエイトプログラムによる広告を掲載しています。広告には「PR」と表示します。広告の有無は、計算結果に影響しません。</p>
@@ -236,9 +243,9 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 const $=id=>document.getElementById(id);
 const M=1e4,KEY='furusato-limit-v1';
 const D={inc:500,sp:0,ip:0,tk:0,r1:0,r2:0,sh:'',id:'',lf:'',md:'',hl:0,ju:'',jb:'',jt:'auto'};
-const SHOW0={res:1,memo:1,det:1,tbl:1,how:1,gloss:1,share:1};
-const NAMES={res:'上限額',memo:'寄附メモ',det:'計算の内訳',tbl:'早見表',how:'しくみ',gloss:'よくある質問',share:'シェア'};
-let F,SH,MEMO;
+const SHOW0={res:1,memo:1,plan:1,det:1,tbl:1,how:1,gloss:1,share:1};
+const NAMES={res:'上限額',memo:'寄附メモ',plan:'残りの使いみち',det:'計算の内訳',tbl:'早見表',how:'しくみ',gloss:'よくある質問',share:'シェア'};
+let F,SH,MEMO,PK=0;
 const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
 const num=v=>{const n=parseFloat(v);return isFinite(n)&&n>0?n:0};
 function load(){F={...D};SH={...SHOW0};MEMO=[];try{const j=JSON.parse(localStorage.getItem(KEY));if(j){if(j.f)Object.assign(F,j.f);if(j.show)Object.assign(SH,j.show);if(Array.isArray(j.memo))MEMO=j.memo.filter(m=>m&&typeof m.a==='number')}}catch(e){}}
@@ -306,6 +313,29 @@ function rMemo(c){const used=MEMO.reduce((s,m)=>s+m.a,0),lim=c.lim>2000?c.lim:0,
  if(n>5)msg+=`<div class="msg w">寄附先が${n}自治体です。6自治体以上はワンストップ特例が使えないので、確定申告が必要です。</div>`;
  const list=MEMO.map((m,i)=>`<li><span>${esc(m.n||'(名前なし)')}</span><b>${yen(m.a)}</b><button type="button" data-i="${i}" aria-label="削除">✕</button></li>`).join('');
  return `<div class="bar"><i class="${left<0?'over':''}" style="width:${pct}%"></i></div><p class="mut" style="margin:0">${yen(used)} / ${yen(lim)}(${MEMO.length}件・${n}自治体)</p>${msg}${list?`<ul class="dl">${list}</ul>`:''}`}
+/* ---- 残りの枠の使いみち ---- */
+// 楽天アフィリエイトのID。リンク先(pc=)だけを差しかえて使う
+const AFF='582956fc.8e51abce.582956fd.43136d33';
+const CATS=[['お米','米'],['お肉','肉'],['海鮮・魚','海鮮'],['くだもの','果物'],['トイレットペーパー','トイレットペーパー'],['ティッシュ','ティッシュ'],['水・お茶','飲料'],['すべて','']];
+function rkt(kw,lo,hi){const u='https://search.rakuten.co.jp/search/mall/'+encodeURIComponent('ふるさと納税'+(kw?' '+kw:''))+'/?min='+lo+'&max='+hi;
+ return 'https://hb.afl.rakuten.co.jp/hgc/'+AFF+'/?pc='+encodeURIComponent(u)+'&m='+encodeURIComponent(u)}
+function split(left,k){const per=Math.floor(left/k/1000)*1000,a=Array(k).fill(per);a[0]=left-per*(k-1);return a}
+function rPlan(c){const lim=c.lim>2000?c.lim:0,used=MEMO.reduce((s,m)=>s+m.a,0);
+ if(!lim)return '<p class="mut" style="margin:0">上限額が出ると、ここに残りの枠の使いみちが出ます。</p>';
+ const safe=Math.floor(lim*.9/1000)*1000,left=Math.floor((safe-used)/1000)*1000,toLim=lim-used;
+ if(toLim<0)return '<div class="msg w" style="margin-top:0">すでに上限を超えています。今年の寄附は、ここまでにしておきましょう。</div>';
+ if(left<2000)return `<div class="msg" style="margin-top:0">安心ライン(上限の9割)まで、寄附が済んでいます。今年はここまでで十分です。</div><p class="sd">上限いっぱいまでは、あと${yen(toLim)}あります。年収が確定してから足すと安全です。</p>`;
+ const n=new Set(MEMO.map(m=>m.n.trim()).filter(Boolean)).size,slots=Math.max(0,5-n);
+ const ks=[1,2,3].filter(k=>k===1||left/k>=5000);if(!ks.includes(PK))PK=left>=40000&&ks.includes(2)?2:1;
+ const a=split(left,PK),hi=a[a.length-1],lo=Math.max(1000,Math.floor(hi*.8/1000)*1000);
+ const seg=ks.length>1?`<div class="seg" id="pk">${ks.map(k=>`<button type="button" class="${k===PK?'on':''}" data-k="${k}" aria-pressed="${k===PK}">${k===1?'1件で使う':k+'件に分ける'}</button>`).join('')}</div>`:'';
+ let warn='';
+ if(n>5)warn='';else if(PK>slots)warn=`<div class="msg w">いま${n}自治体に寄附しています。ワンストップ特例を使うなら、${slots?`新しい自治体はあと${slots}つまでです`:'寄附済みの自治体から選ぶと、確定申告なしで済みます'}(同じ自治体への寄附は、何回でも1自治体と数えます)。</div>`;
+ const links=CATS.map(([lb,kw])=>`<a href="${rkt(kw,lo,hi)}" target="_blank" rel="nofollow sponsored noopener" data-c="${lb}">${lb}</a>`).join('');
+ return `<p class="mut" style="margin:0">安心ライン(上限の9割)まで、あと</p><p class="big">${yen(left)}</p>
+ ${seg}<p class="mut" style="margin:6px 0 0">分け方の例</p><p class="spl">${a.map(yen).join(' + ')}</p>${warn}
+ <p class="pr">PR・楽天ふるさと納税で、${yen(lo)}〜${yen(hi)}の返礼品をさがす</p><div class="fd" id="fd">${links}</div>
+ <p class="sd">楽天市場の検索結果(寄附額 ${lo.toLocaleString('ja-JP')}〜${hi.toLocaleString('ja-JP')}円)が開きます。寄附額や在庫は変わるので、リンク先で確認してください。寄附したら、上の寄附メモに入れると残りが更新されます。</p>`}
 function esc(s){return String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
 function rDet(c){const r=(a,b,cls='')=>`<tr class="${cls}"><td>${a}</td><td>${b}</td></tr>`;
  if(c.nt)return `<div class="sc"><table>${r('所得割額(通知書)',yen(num(F.ju)))}${num(F.jb)?r('足し戻した税額控除',yen(num(F.jb))):''}${r('計算に使う所得割額',yen(c.ntBase),'t')}</table></div>
@@ -322,8 +352,10 @@ function rTbl(){const incs=[300,400,500,600,700,800,900,1000,1200,1500];const co
  const rows=incs.map(v=>`<tr class="${v===me?'me':''}"><td>${v}万円</td>${cols.map(([sp,ip,tk])=>{const l=calc({...D,inc:v,sp,ip,tk}).lim;return `<td>${l>2000?(Math.floor(l/1000)/10).toFixed(1)+'万':'-'}</td>`}).join('')}</tr>`).join('');
  return `<table>${head}${rows}</table>`}
 function render(){const c=calcAll(F);
- $('v-res').innerHTML=rRes(c);$('v-memo').innerHTML=rMemo(c);$('v-det').innerHTML=rDet(c);$('v-tbl').innerHTML=rTbl();$('dl').innerHTML=deadline();
+ $('v-res').innerHTML=rRes(c);$('v-memo').innerHTML=rMemo(c);$('v-plan').innerHTML=rPlan(c);$('v-det').innerHTML=rDet(c);$('v-tbl').innerHTML=rTbl();$('dl').innerHTML=deadline();
  $('v-memo').querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{MEMO.splice(+b.dataset.i,1);save();render()});
+ const pk=$('pk');if(pk)pk.onclick=e=>{const b=e.target.closest('button');if(!b)return;PK=+b.dataset.k;render()};
+ const fd=$('fd');if(fd)fd.onclick=e=>{const l=e.target.closest('a');if(l&&window.gtag)gtag('event','furusato_search_click',{category:l.dataset.c,split:PK})};
  Object.keys(NAMES).forEach(k=>{const el=$('s-'+k);if(el)el.hidden=!SH[k]});$('jump').hidden=!SH.how;save()}
 function sync(){$('inc').value=F.inc;$('incr').value=Math.min(2500,Math.max(100,F.inc));
  document.querySelectorAll('.seg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.classList.toggle('on',String(F[g.dataset.k])===b.dataset.v)));
@@ -341,7 +373,7 @@ $('jt').onchange=e=>{F.jt=e.target.value;render()};
 $('jclr').onclick=()=>{F.ju='';F.jb='';F.jt='auto';sync();render()};
 $('m_add').onclick=()=>{const a=Math.round(num($('m_a').value));if(!a){$('m_a').focus();return}MEMO.push({n:$('m_n').value.trim().slice(0,40),a});$('m_n').value='';$('m_a').value='';render()};
 $('m_a').onkeydown=e=>{if(e.key==='Enter')$('m_add').click()};
-$('reset').onclick=()=>{if(MEMO.length&&!confirm('入力と寄附メモをすべて消して、最初の状態に戻します。よろしいですか?'))return;F={...D};MEMO=[];SH={...SHOW0};sync();render()};
+$('reset').onclick=()=>{if(MEMO.length&&!confirm('入力と寄附メモをすべて消して、最初の状態に戻します。よろしいですか?'))return;F={...D};MEMO=[];SH={...SHOW0};PK=0;sync();render()};
 (function(){const U='https://zero-kobo.github.io/furusato-limit/',T='ふるさと納税 上限額シミュレーター【2026年版】年収と家族を入れるだけで上限額がわかる無料ツール',e=encodeURIComponent;
  const L=[['X','https://twitter.com/intent/tweet?text='+e(T)+'&url='+e(U)+'&hashtags='+e('ふるさと納税')],['LINE','https://social-plugins.line.me/lineit/share?url='+e(U)],['Threads','https://www.threads.net/intent/post?text='+e(T+' '+U)],['はてブ','https://b.hatena.ne.jp/add?mode=confirm&url='+e(U)+'&title='+e(T)],['Facebook','https://www.facebook.com/sharer/sharer.php?u='+e(U)]];
  $('shr').innerHTML=L.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener noreferrer">${n}</a>`).join('')+'<button type="button" id="sh_cp">リンクをコピー</button>'+(navigator.share?'<button type="button" id="sh_os">その他</button>':'');
