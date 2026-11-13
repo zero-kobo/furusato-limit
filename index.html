@@ -89,12 +89,36 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 .ad-box{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:12px;text-align:center;overflow-x:auto}
 .ad-box:empty{display:none}
 .ad-box::before{content:"PR・" attr(data-title);display:block;font-size:.8rem;color:var(--mut);margin-bottom:8px}
+.sb{background:var(--cd);border-bottom:1px solid var(--ln)}
+.sb div{max-width:640px;margin:0 auto;padding:9px 14px;display:flex;justify-content:space-between;align-items:center}
+.sb a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.92rem}
+.sb svg{width:26px;height:26px;border-radius:6px}
+.sb span{font-size:.74rem;color:var(--ac);border:1px solid var(--ac);border-radius:99px;padding:1px 9px}
+.card.hero{--on:#fff;background:var(--ac);border-color:var(--ac);color:var(--on);padding:18px 16px}
+@media(prefers-color-scheme:dark){.card.hero{--on:#2a1408}}
+.hero h2{color:var(--on);opacity:.85;font-size:.9rem;margin:0 0 2px}
+.hero .big{font-size:2.3rem;letter-spacing:.01em}
+.hero .mut,.hero .sd{color:var(--on);opacity:.9}.hero a{color:var(--on)}
+.hero .b{background:rgba(255,255,255,.2);color:var(--on)}.hero .b.w{background:var(--cd);color:var(--wn)}
+.bar{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:14px 0 6px;background:rgba(0,0,0,.15)}
+.bar i{display:block;height:100%}.bar .n{background:var(--on)}.bar .s{background:var(--on);opacity:.55}.bar .t{background:var(--on);opacity:.28}
+.lg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.78rem}.lg span:before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--on);margin-right:5px}
+.lg .s:before{opacity:.55}.lg .t:before{opacity:.28}
+.jump{display:block;font-size:.82rem;color:var(--ac);margin-top:12px}
+.fx{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ac);color:#fff;box-shadow:0 -2px 10px rgba(0,0,0,.15);transition:transform .2s}
+@media(prefers-color-scheme:dark){.fx{color:#2a1408}}
+.fx.off{transform:translateY(110%)}
+.fx a{max-width:640px;margin:0 auto;padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:baseline;gap:10px;color:inherit;text-decoration:none}
+.fx small{font-size:.8rem;opacity:.9}.fx b{font-size:1.3rem}.fx em{font-style:normal;font-size:.78rem;opacity:.9}
+body{padding-bottom:56px}
+.hero .big{margin:10px 0 2px;line-height:1.25}.hero .sub div{background:rgba(255,255,255,.16);border-color:transparent}.hero .sub b{color:var(--on)}.hero p{color:var(--on)}
 </style>
 <!-- Google tag (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-40QSGNSQEL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-40QSGNSQEL");</script>
 </head>
 <body>
+<header class="sb"><div><a href="https://zero-kobo.github.io/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#ffc61a"/><g transform="rotate(45 32 32)" fill="#1c2830"><rect x="27.5" y="22" width="9" height="34" rx="4.5"/><circle cx="32" cy="17" r="11.5"/><rect x="28" y="2" width="8" height="14" rx="1.5" fill="#ffc61a"/></g></svg>ちいさなツール工房</a><span>無料・登録不要</span></div></header>
 <div class="wrap">
 <h1>ふるさと納税 上限額シミュレーター<small>2026年版</small></h1>
 <p class="lead">年収と家族を入れるだけで、自己負担2,000円で済む寄附額の目安がわかります。<span id="dl"></span> <a id="jump" href="#s-how">はじめての方は、しくみから見る</a></p>
@@ -136,9 +160,7 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
  <button class="btn sm" type="button" id="jclr" style="margin-top:10px">通知書の数字を消して、年収からの計算に戻す</button>
 </details>
 
-<section class="card"><b>表示する項目</b><p class="mut" style="margin:2px 0 8px">いらない項目はタップで非表示にできます。</p><div class="chips" id="chips"></div></section>
-
-<section class="card" id="s-res"><h2>あなたの上限額の目安</h2><div id="v-res"></div></section>
+<section class="card hero" id="s-res"><h2>あなたの上限額の目安</h2><div id="v-res"></div></section>
 <!-- 広告枠1:結果の直後。楽天アフィリエイトのタグ(楽天ふるさと納税など)を、下のdivの中にそのまま貼る(JS経由にしない)。空の間は自動で非表示 -->
 <div class="ad-box" data-title="楽天ふるさと納税で返礼品をさがす"><a href="https://hb.afl.rakuten.co.jp/hsc/58893080.bee57432.58296085.990ab6e6/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxMDMiLCJiYW4iOjE1NjQ2MDAsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/58893080.bee57432.58296085.990ab6e6/?me_id=1&me_adv_id=1564600&t=pict" border="0" style="margin:2px;max-width:100%;height:auto" alt="楽天ふるさと納税" title=""></a></div>
 
@@ -149,6 +171,8 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 <section class="card" id="s-plan"><h2>残りの枠の使いみち</h2><div id="v-plan"></div><p class="sd" style="margin-top:10px">金額別の考え方は、<a href="nokori-waku/" style="color:var(--ac)">残り枠の使い切り方</a>にまとめています。</p></section>
 <section class="card" id="s-det"><h2>計算の内訳</h2><div id="v-det"></div></section>
 <section class="card" id="s-tbl"><h2>年収別の早見表</h2><div class="sc" id="v-tbl"></div><p class="note" style="margin:8px 0 0">社会保険料は自動の目安(年収の約15%)、ほかの控除なしで計算した目安です。「夫婦」は配偶者を扶養している場合です。</p></section>
+
+<section class="card"><b>表示する項目</b><p class="mut" style="margin:2px 0 8px">いらない項目はタップで非表示にできます。</p><div class="chips" id="chips"></div></section>
 
 <section class="card" id="s-share"><h2>このツールをシェア</h2><div class="sh" id="shr"></div><p class="mut" style="margin:8px 0 0">共有されるのはツールのURLだけです。入力した年収や寄附メモは含まれません。</p></section>
 
@@ -220,7 +244,7 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 <dt>お問い合わせ</dt><dd>不具合やご意見は、<a href="https://note.com/zero_kobo/n/n77f9b8b0fd67" target="_blank" rel="noopener noreferrer">解説記事(note)</a>のコメント欄にお寄せください。</dd>
 <dt>運営者のnote</dt><dd><a href="https://note.com/zero_kobo" target="_blank" rel="noopener noreferrer">note.com/zero_kobo</a></dd>
 <dt>ほかのツール</dt><dd><a href="https://zero-kobo.github.io/">ちいさなツール工房のツール一覧</a></dd>
-<dt>最終更新</dt><dd>2026年11月11日</dd>
+<dt>最終更新</dt><dd>2026年11月13日</dd>
 </dl>
 <h2>広告について</h2>
 <p>当サイトは、楽天アフィリエイトなどのアフィリエイトプログラムによる広告を掲載しています。広告には「PR」と表示します。広告の有無は、計算結果に影響しません。</p>
@@ -239,6 +263,8 @@ tr.t td{font-weight:700;border-bottom:0}tr.me td{background:var(--acb)}
 
 <p class="note">※概算です。2026年(令和8年)分の所得税と、2027年度(令和9年度)の住民税の制度をもとにしています(2026年10月時点)。会社員の給与所得だけを前提にした計算で、ほかの所得や一部の控除は含みません。最新の情報は、総務省「ふるさと納税ポータルサイト」などの公式情報で確認してください。</p>
 </div>
+
+<div class="fx off" id="fx"><a href="#s-res"><small>上限額の目安</small><b id="fxv"></b><em>くわしく ›</em></a></div>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -302,6 +328,7 @@ function rRes(c){
  if(num(F.md)>0)bd.push('<span class="b w">医療費控除あり:確定申告が必要</span>');
  return `<p class="mut" style="margin:0">自己負担2,000円で済む寄附額の上限</p><p class="big">約${yen(Math.floor(c.lim/100)*100)}</p>
  <div class="sub"><div><span class="mut">安心ライン(9割)</span><b>${yen(safe)}</b></div><div><span class="mut">寄附メモの合計</span><b>${yen(used)}</b></div></div>
+ ${used>0?`<div class="bar" role="img" aria-label="寄附の進みぐあい"><i class="n" style="width:${Math.min(100,used/safe*100)}%"></i></div><div class="lg"><span class="n">寄附ずみ ${yen(used)}</span><span class="t">安心ラインまで ${safe-used>=0?'あと'+yen(safe-used):'超えています'}</span></div>`:''}
  ${bd.length?`<div class="badges">${bd.join('')}</div>`:''}
  ${c.nt?`<p class="mut" style="margin:10px 0 0">年収からの推定では約${yen(Math.floor(c.limEst/100)*100)}でした(差 ${(c.lim-c.limEst>=0?'+':'−')+yen(Math.abs(Math.floor((c.lim-c.limEst)/100)*100))})。</p>`:`<p class="mut" style="margin:10px 0 0">住民税決定通知書が手元にあれば、「住民税決定通知書から計算する」でもっと正確に出せます。</p>`}
  <p class="mut" style="margin:6px 0 0">2,000円を引いた残りが、2027年の住民税(と所得税)から差し引かれます。</p>`}
@@ -352,7 +379,7 @@ function rTbl(){const incs=[300,400,500,600,700,800,900,1000,1200,1500];const co
  const me=Math.round(num(F.inc)/100)*100;
  const rows=incs.map(v=>`<tr class="${v===me?'me':''}"><td>${v}万円</td>${cols.map(([sp,ip,tk])=>{const l=calc({...D,inc:v,sp,ip,tk}).lim;return `<td>${l>2000?(Math.floor(l/1000)/10).toFixed(1)+'万':'-'}</td>`}).join('')}</tr>`).join('');
  return `<table>${head}${rows}</table>`}
-function render(){const c=calcAll(F);
+function render(){const c=calcAll(F);$('fxv').textContent=c.lim<=2000?'ほぼ0円':'約'+yen(Math.floor(c.lim/100)*100);
  $('v-res').innerHTML=rRes(c);$('v-memo').innerHTML=rMemo(c);$('v-plan').innerHTML=rPlan(c);$('v-det').innerHTML=rDet(c);$('v-tbl').innerHTML=rTbl();$('dl').innerHTML=deadline();
  $('v-memo').querySelectorAll('button[data-i]').forEach(b=>b.onclick=()=>{MEMO.splice(+b.dataset.i,1);save();render()});
  const pk=$('pk');if(pk)pk.onclick=e=>{const b=e.target.closest('button');if(!b)return;PK=+b.dataset.k;render()};
@@ -382,6 +409,8 @@ $('reset').onclick=()=>{if(MEMO.length&&!confirm('入力と寄附メモをすべ
  if($('sh_os'))$('sh_os').onclick=()=>navigator.share({title:T,url:U}).catch(()=>{});
 })();
 load();sync();render();
+/* 結果が画面の外にあるときだけ、下に結果を出す */
+if('IntersectionObserver' in window)new IntersectionObserver(e=>$('fx').classList.toggle('off',e[0].isIntersecting||!SH.res),{threshold:.15}).observe($('s-res'));
 </script>
 </body>
 </html>
